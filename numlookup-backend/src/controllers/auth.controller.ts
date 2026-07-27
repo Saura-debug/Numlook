@@ -17,6 +17,7 @@ class AuthController {
 
       return res.status(201).json({
         success: true,
+        message:"User has been Registered Successfully",
         data: result,
       });
     } catch (error) {
@@ -38,6 +39,7 @@ class AuthController {
 
         return res.status(200).json({
             success:true,
+            message:"Login Successfully",
             data:result
         });
 
