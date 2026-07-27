@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(cuid())
+  name     String
+  email    String @unique
+  password String
+
+  searches SearchHistory[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PhoneLookup {
+  id String @id @default(cuid())
+
+  phoneNumber String @unique
+
+  valid Boolean?
+
+  lineType String?
+
+  carrier String?
+
+  mcc String?
+  mnc String?
+
+  internationalFormat String?
+  nationalFormat      String?
+
+  country       String?
+  countryCode   String?
+  countryPrefix String?
+
+  region String?
+  city   String?
+
+  timezone String?
+
+  smsDomain String?
+  smsEmail  String?
+
+  lineStatus String?
+
+  isVoip Boolean?
+
+  riskLevel     String?
+  disposable    Boolean?
+  abuseDetected Boolean?
+
+  lastFetched DateTime @default(now())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  searches SearchHistory[]
+}
+
+model SearchHistory {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  phoneLookupId String
+  phoneLookup   PhoneLookup @relation(fields: [phoneLookupId], references: [id])
+
+  searchedAt DateTime @default(now())
+}
