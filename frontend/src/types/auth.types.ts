@@ -12,7 +12,7 @@ export interface RegisterRequest {
 }
 
 export interface AuthResponse {
-  success: boolean;
+  
   token: string;
   user: User;
 }
