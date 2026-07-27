@@ -37,24 +37,29 @@ export function AuthProvider({
         storage.getToken()
     );
 
-    const [user,setUser]=useState<User | null>(null);
+    const [user,setUser]=useState<User | null>(
+         storage.getUser()
+    );
 
     function login(
         jwt:string,
         currentUser:User
     ){
-
+        
         storage.setToken(jwt);
 
-        setToken(jwt);
+storage.setUser(currentUser);
 
-        setUser(currentUser);
+setToken(jwt);
+
+setUser(currentUser);
+       
 
     }
 
     function logout(){
 
-        storage.removeToken();
+        
 
         setToken(null);
 
