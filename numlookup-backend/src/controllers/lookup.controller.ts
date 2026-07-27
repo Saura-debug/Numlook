@@ -14,6 +14,7 @@ class LookupController {
         });
       }
     const userId = req.user!.userId;
+    // const userId = (req as any).user.userId
       const result = await lookupService.lookup(phone,userId);
 
       return res.status(200).json({
