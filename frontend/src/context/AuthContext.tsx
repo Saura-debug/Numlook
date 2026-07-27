@@ -56,6 +56,7 @@ setUser(currentUser);
     }
 
     function logout(){
+        storage.clear();
 
         
 
