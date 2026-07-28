@@ -1,3 +1,4 @@
+import { type ApiResponse } from "@/types/api.types";
 import api from "../api/axios";
 
 import ENDPOINTS from "../api/endpoints";
@@ -9,7 +10,7 @@ class LookupService{
     async lookup(phone:string){
 
         const response=
-        await api.get<LookupResponse>(
+        await api.get<ApiResponse<LookupResponse>>(
             ENDPOINTS.LOOKUP.SEARCH,
             {
                 params:{
