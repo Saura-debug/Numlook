@@ -13,7 +13,7 @@ class LookupController {
           message: "Phone number is required",
         });
       }
-    const userId = req.user!.userId;
+const userId = (req as any).user.userId;
     // const userId = (req as any).user.userId
       const result = await lookupService.lookup(phone,userId);
 

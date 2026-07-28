@@ -11,6 +11,7 @@ import { LoginUserDto } from "../dto/auth.dto";
 class AuthService {
 
   async register(data: RegisterUserDto) {
+    console.log("Register API called");
     const existingUser =
       await authRepository.findByEmail(data.email);
 
@@ -23,10 +24,14 @@ class AuthService {
 
     const hashedPassword =
       await bcrypt.hash(data.password, 10);
-
+      console.log("Original:", data.password);
+console.log("Hashed:", hashedPassword);
     const user =
       await authRepository.createUser(
-        data
+        {
+   ...data,
+  password: hashedPassword,
+        }
       );
 
     const token =

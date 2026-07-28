@@ -8,7 +8,8 @@ class SearchHistoryController {
     next: NextFunction
   ) {
     try {
-      const userId = req.user!.userId;
+      // const userId = req.user!.userId;
+      const userId = (req as any).user.userId;
 
       const page = Number(req.query.page) || 1;
       const limit = Number(req.query.limit) || 10;

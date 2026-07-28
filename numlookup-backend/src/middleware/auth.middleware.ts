@@ -25,7 +25,8 @@ export const authenticate = (
       process.env.JWT_SECRET!
     );
 
-    req.user = decoded as any;
+    // req.user = decoded as any;
+    (req as any).user = decoded;
 
     next();
   } catch (error) {
