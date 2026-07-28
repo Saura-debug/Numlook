@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button } from "../../../@/components/ui/button";
-import { Input } from "../../../@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 
 import {
   lookupSchema,
-  LookupFormData,
+  type LookupFormData,
 } from "../../schemas/lookup.schema";
 
 interface SearchBarProps {

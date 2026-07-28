@@ -2,9 +2,8 @@ import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button } from "../../../@/components/ui/button";
-
-import { Input } from "../../../@/components/ui/input";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input";
 
 import {
     loginSchema,
@@ -39,40 +38,56 @@ export default function LoginForm(){
         )}
         className="space-y-4"
         >
+         <div className="space-y-2">
+    <label
+        htmlFor="email"
+        className="text-sm font-medium"
+    >
+        Email
+    </label>
 
-            <Input
+    <Input 
+    autoComplete="email"
+        id="email"
+        placeholder="Enter your email"
+        {...register("email")}
+    />
 
-            placeholder="Email"
+    {errors.email && (
+        <p className="text-sm text-red-500">
+            {errors.email.message}
+        </p>
+    )}
+</div>
+        
+              <div className="space-y-2">
+    <label
+        htmlFor="password"
+        className="text-sm font-medium"
+    >
+        Password
+    </label>
 
-            {...register("email")}
+    <Input 
+    autoComplete="current-password"
+        id="password"
+        placeholder="Enter your password"
+        {...register("password")}
+    />
 
-            />
+    {errors.password && (
+        <p className="text-sm text-red-500">
+            {errors.email.message}
+        </p>
+    )}
+</div>
 
-            <p className="text-red-500 text-sm">
-
-                {errors.email?.message}
-
-            </p>
-
-            <Input
-
-            type="password"
-
-            placeholder="Password"
-
-            {...register("password")}
-
-            />
-
-            <p className="text-red-500 text-sm">
-
-                {errors.password?.message}
-
-            </p>
+           
 
             <Button
             className="w-full"
             disabled={loginMutation.isPending}
+            type="submit"
             >
 
                 {

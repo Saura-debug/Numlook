@@ -9,3 +9,6 @@ phone:z
 .min(10,"Phone number is required")
 
 });
+export type LookupFormData =
+  z.infer<typeof lookupSchema
+  >;
