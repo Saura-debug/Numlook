@@ -1,34 +1,54 @@
 export interface AbstractApiResponse {
-  valid: boolean;
-  type: string;
-  carrier: string;
+  phone_number: string;
 
-  carrier_data?: {
-    mobile_country_code?: string;
-    mobile_network_code?: string;
-    sms_domain?: string;
-    sms_email?: string;
+  phone_format: {
+    international: string;
+    national: string;
   };
 
-  format?: {
-    international?: string;
-    local?: string;
+  phone_carrier: {
+    name: string;
+    line_type: string;
+    mcc: number;
+    mnc: number;
   };
 
-  country?: {
-    name?: string;
-    code?: string;
-    prefix?: string;
+  phone_location: {
+    country_name: string;
+    country_code: string;
+    country_prefix: string;
+    region: string;
+    city: string;
+    timezone: string;
   };
 
-  location?: string;
-  city?: string;
-  timezone?: string;
-  connection?: string;
+  phone_messaging: {
+    sms_domain: string | null;
+    sms_email: string | null;
+  };
 
-  security?: {
-    risk_level?: string;
-    is_disposable?: boolean;
-    is_abuser?: boolean;
+  phone_validation: {
+    is_valid: boolean;
+    line_status: string;
+    is_voip: boolean;
+    minimum_age: number | null;
+  };
+
+  phone_registration: {
+    name: string | null;
+    type: string | null;
+  };
+
+  phone_risk: {
+    risk_level: string;
+    is_disposable: boolean;
+    is_abuse_detected: boolean;
+  };
+
+  phone_breaches: {
+    total_breaches: number | null;
+    date_first_breached: string | null;
+    date_last_breached: string | null;
+    breached_domains: string[];
   };
 }

@@ -16,6 +16,8 @@ class LookupController {
 const userId = (req as any).user.userId;
     // const userId = (req as any).user.userId
       const result = await lookupService.lookup(phone,userId);
+      console.log("CONTROLLER RESPONSE");
+console.dir(result,{depth:null});
 
       return res.status(200).json({
         success: true,

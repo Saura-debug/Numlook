@@ -35,6 +35,7 @@ class LookupRepository {
 
     // Cache Miss OR Expired Cache
     let data: any;
+    console.log(process.env.ABSTRACT_API_KEY);
 
     try {
       const response = await abstractApi.get("/", {
@@ -47,14 +48,24 @@ class LookupRepository {
       data = response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
+         console.error("Abstract API Error:");
+    console.error("Status:", error.response?.status);
+    console.error("Data:", error.response?.data);
+    console.error("Message:", error.message);
+
         throw new AppError("Phone lookup service unavailable", 503);
       }
 
       throw error;
     }
-
+ 
+   console.log("RAW DATA:");
+console.dir(data, { depth: null });
   const lookupData = mapAbstractResponse(data);
-
+  console.log("MAPPED DATA:");
+console.dir(lookupData, { depth: null });
+ 
+ 
     // Expired Cache -> Update
     if (cached) {
       const updated = await prisma.phoneLookup.update({
@@ -86,7 +97,8 @@ class LookupRepository {
             ...lookupData,
           },
         });
-
+ console.log("AFTER CREATE");
+    console.dir(lookup,{depth:null});
         await tx.searchHistory.create({
           data: {
             userId,
