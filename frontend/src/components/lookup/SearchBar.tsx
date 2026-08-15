@@ -44,6 +44,7 @@ export default function SearchBar({
       )}
 
       <Button
+      type="submit"
         className="w-full"
         disabled={isLoading}
       >

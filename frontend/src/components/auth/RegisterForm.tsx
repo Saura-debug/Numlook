@@ -81,7 +81,7 @@ placeholder="Password"
 <p>{errors.password?.message}</p>
 
 <Button
-
+type="submit"
 className="w-full"
 
 disabled={registerMutation.isPending}

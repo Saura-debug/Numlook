@@ -8,11 +8,13 @@ interface Props {
 export default function ResultCard({
   result,
 }: Props) {
+  
   return (
     <div className="rounded-xl bg-white p-6 shadow">
       <h2 className="mb-6 text-2xl font-bold">
         Phone Information
       </h2>
+      
 
       <InfoRow
         label="Phone"
