@@ -1,15 +1,15 @@
 const ENDPOINTS = {
   AUTH: {
-    LOGIN: "/auth/login",
-    REGISTER: "/auth/register",
+    LOGIN: "/api/v1/auth/login",
+    REGISTER: "/api/v1/auth/register",
   },
 
   LOOKUP: {
-    SEARCH: "/lookup",
+    SEARCH: "/api/v1/lookup",
   },
 
   HISTORY: {
-    LIST: "/search-history",
+    LIST: "/api/v1/search-history",
   },
 };
 
