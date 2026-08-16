@@ -19,14 +19,25 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(helmet());
 
+// const allowedOrigins = [
+//   "http://localhost:5173",
+//   process.env.FRONTEND_URL,
+// ].filter(Boolean);
+
+// app.use(
+//   cors({
+//     origin: allowedOrigins as string[],
+//     credentials: true,
+//   })
+// );
 const allowedOrigins = [
   "http://localhost:5173",
-  process.env.FRONTEND_URL,
-].filter(Boolean);
+  "https://numlook.vercel.app",
+];
 
 app.use(
   cors({
-    origin: allowedOrigins as string[],
+    origin: allowedOrigins,
     credentials: true,
   })
 );
