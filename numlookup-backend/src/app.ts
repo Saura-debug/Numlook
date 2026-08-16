@@ -19,22 +19,21 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(helmet());
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://yourfrontend.com",
-    ],
-
+    origin: allowedOrigins as string[],
     credentials: true,
   })
 );
 
-
 app.use("/api/v1", lookupRouter);
 app.use("/api/v1/auth", authRouter);
-app.use(errorHandler);
+
 app.use(
   "/api/v1/search-history",
   searchHistoryRouter
@@ -44,6 +43,7 @@ app.use(
   swaggerUi.serve,
   swaggerUi.setup(swaggerSpec)
 );
+app.use(errorHandler);
 app.use((req, res) => {
   res.status(404).json({
     success: false,
