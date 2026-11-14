@@ -79,7 +79,7 @@ export default function LoginForm(){
 
     {errors.password && (
         <p className="text-sm text-red-500">
-            {errors.email.message}
+            {errors.password.message}
         </p>
     )}
 </div>
