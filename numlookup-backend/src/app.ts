@@ -32,7 +32,7 @@ app.use(helmet());
 // );
 const allowedOrigins = [
   "http://localhost:5173",
-  "numlook.sp7017184.workers.dev"
+  "https://numlook.sp7017184.workers.dev"
 ];
 
 app.use(
