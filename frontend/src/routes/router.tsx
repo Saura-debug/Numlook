@@ -6,7 +6,7 @@ import Login from "@/pages/Login";
 import  Register  from "@/pages/Register";
 import Dashboard from "@/pages/Dashboard";
 import Lookup from "@/pages/Lookup";
-import History from "@/pages/History"
+// import History from "@/pages/History"
 import DashboardLayout from "@/layouts/DashboardLayout";
 
 const router=createBrowserRouter([
@@ -49,13 +49,13 @@ element:<Lookup/>
 
 },
 
-{
+// {
 
-path:"/history",
+// path:"/history",
 
-element:<History/>
+// element:<History/>
 
-}
+// }
 
 ]
 
@@ -66,3 +66,4 @@ element:<History/>
 }
 
 ]);
+export default router;
