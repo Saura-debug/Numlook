@@ -5,7 +5,7 @@ export function generateToken(userId: string) {
     { userId },
     process.env.JWT_SECRET!,
     {
-      expiresIn: "7d",
+      expiresIn: "7m",
     }
   );
 }
