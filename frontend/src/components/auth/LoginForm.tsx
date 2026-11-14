@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input";
+
 
 import {
     loginSchema,
@@ -105,6 +107,7 @@ export default function LoginForm(){
                 }
 
             </Button>
+            <Link to="/register">Register</Link>
 
         </form>
 
